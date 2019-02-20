@@ -33,7 +33,7 @@ function _steptrap
 
 ## The Debugger Command Loop
 
-function_cmdloop{
+function _cmdloop{
     local cmd args
 
     while read -e -p "bashdb> " cmd args; do
@@ -55,3 +55,20 @@ function_cmdloop{
 }
 
 ## See if line number has breakpoint
+
+function _at_linenumbp
+{
+    local i=0
+    
+    #Loop through the breakpoints array check if any match current number. If so return true(0), otherwise false.
+    
+    if [ "$_linebp" ]; then
+        while (( $i < ${#_linebp[@]} )); do
+            if (( ${_linebp[$i]} == $_curline )); then
+                return 0
+            fi
+            let i=$i+1
+        done
+    fi
+    return 1
+}
