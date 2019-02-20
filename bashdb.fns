@@ -145,3 +145,16 @@ function _displayscript
 }
 
 ## Toggle execution trace on/off
+
+function _xtrace
+{
+    let _trace="! $_trace"
+    _msg "Execution trace "
+    if (( $_trace )); then
+        _msg "on"
+    else
+        _msg "off"
+    fi
+}
+
+## Print passed args to stderr
