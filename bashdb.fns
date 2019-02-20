@@ -158,3 +158,10 @@ function _xtrace
 }
 
 ## Print passed args to stderr
+
+function _msg
+{
+    echo -e "$@" >&2
+}
+
+## Print command menu
